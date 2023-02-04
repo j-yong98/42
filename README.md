@@ -3,7 +3,7 @@
 
 ## 1주차
   - [SH00](/sh00/sh00.md) : touch, chmod, git, diff, file(magic file)에 대한 학습
-  - [SH01](/sh01/sh01.md)
+  - [SH01](/sh01/sh01.md) : sed, tr, awk, wc 등 주로 파이프 라인을 사용하여 출력 결과를 추출 수정하는 부분이 많다.
   - [C00](/c00/c00.md)
   - [C01](/c01/c01.md)
   - [C02](/c02/c02.md)
