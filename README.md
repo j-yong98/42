@@ -2,7 +2,7 @@
 42서울 라피신
 
 ## 1주차
-  - [SH00](/sh00/sh00.md)
+  - [SH00](/sh00/sh00.md) : touch, chmod, git, diff, file(magic file)에 대한 학습
   - [SH01](/sh01/sh01.md)
   - [C00](/c00/c00.md)
   - [C01](/c01/c01.md)
