@@ -1,5 +1,5 @@
 # 42Seoul (23.01.09 ~ 23.02.03)
-42서울 라피신
+42서울 라피신(9기 1차)
 
 ## 1주차
   - [SH00](/sh00/sh00.md) : touch, chmod, git, diff, file(magic file)에 대한 학습
