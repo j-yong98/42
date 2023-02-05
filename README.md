@@ -6,7 +6,7 @@
   - [SH01](/sh01/sh01.md) : sed, tr, awk, wc 등 주로 파이프 라인을 사용하여 출력 결과를 추출 수정하는 부분이 많다.
   - [C00](/c00/c00.md) : write함수 ascii와 char형에 대해서 학습하게 된다.
   - [C01](/c01/c01.md) : 포인터에 관련된 학습을 하게 되며 strlen, swap, sort에 대해 학습하게 된다.
-  - [C02](/c02/c02.md)
+  - [C02](/c02/c02.md) : strcpy, strncpy, strlcpy를 이해하고 직접 구현해보며 차이점을 알게 된다. 또한 진법변환과 void포인터 메모리의 표현 방식을 이해로 문제를 해결할 수 있다.
   - [RUSH00](/rush00/rush00.md)
 ## 2주차
   - [C03](/c03/c03.md)
