@@ -4,8 +4,8 @@
 ## 1주차
   - [SH00](/sh00/sh00.md) : touch, chmod, git, diff, file(magic file)에 대한 학습
   - [SH01](/sh01/sh01.md) : sed, tr, awk, wc 등 주로 파이프 라인을 사용하여 출력 결과를 추출 수정하는 부분이 많다.
-  - [C00](/c00/c00.md)
-  - [C01](/c01/c01.md)
+  - [C00](/c00/c00.md) : write함수 ascii와 char형에 대해서 학습하게 된다.
+  - [C01](/c01/c01.md) : 포인터에 관련된 학습을 하게 되며 strlen, swap, sort에 대해 학습하게 된다.
   - [C02](/c02/c02.md)
   - [RUSH00](/rush00/rush00.md)
 ## 2주차
