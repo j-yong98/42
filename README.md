@@ -9,7 +9,7 @@
   - [C02](/c02/c02.md) : strcpy, strncpy, strlcpy를 이해하고 직접 구현해보며 차이점을 알게 된다. 또한 진법변환과 void포인터 메모리의 표현 방식을 이해로 문제를 해결할 수 있다.
   - [RUSH00](/rush00/rush00.md) : 다중 while문을 통해 원하는 출력을 할 수 있다
 ## 2주차
-  - [C03](/c03/c03.md)
+  - [C03](/c03/c03.md) : strcmp, strncmp, strcat, strncat, strlcat, strstr에 대해 학습하게 된다.
   - [C04](/c04/c04.md)
   - [C05](/c05/c05.md)
   - [C06](/c06/c06.md)
