@@ -10,7 +10,7 @@
   - [RUSH00](/rush00/rush00.md) : 다중 while문을 통해 원하는 출력을 할 수 있다
 ## 2주차
   - [C03](/c03/c03.md) : strcmp, strncmp, strcat, strncat, strlcat, strstr에 대해 학습하게 된다.
-  - [C04](/c04/c04.md)
+  - [C04](/c04/c04.md) : strlen, atoi, 진법 변환에 대해 학습하게 된다.
   - [C05](/c05/c05.md)
   - [C06](/c06/c06.md)
   - [RUSH01](/rush01/rush01.md)
