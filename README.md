@@ -11,8 +11,8 @@
 ## 2주차
   - [C03](/c03/c03.md) : strcmp, strncmp, strcat, strncat, strlcat, strstr에 대해 학습하게 된다.
   - [C04](/c04/c04.md) : strlen, atoi, 진법 변환에 대해 학습하게 된다.
-  - [C05](/c05/c05.md)
-  - [C06](/c06/c06.md)
+  - [C05](/c05/c05.md) : 반복문과 재귀를 사용하여 제곱, 팩토리얼, 제곱근 등 문제를 해결하게 된다.
+  - [C06](/c06/c06.md) : main의 argc와 argv에 대해 이해, 학습하게 된다.
   - [RUSH01](/rush01/rush01.md)
 ## 3주차
   - [C07](/c07/c07.md)
