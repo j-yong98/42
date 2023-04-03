@@ -68,5 +68,43 @@ SElinux와 AppArmor
 -
 - gpasswd
   - /etc/group과 /etc/gshadow를 관리하는 명령어
+  - 옵션
+    - a <사용자> <그룹>
+      - 사용자를 그룹에 추가
+    - d <사용자> <그룹>
+      - 사용자를 그룹에서 제거
 - usermod
   - usermod는 사용자 계정의 속성을 변경하는데 사용하는 명령어
+  - option
+    - aG <그룹> <사용자>
+      - 사용자를 그룹에 추가
+- useradd
+  - useradd는 새로운 사용자를 추가하는 명령어
+  - useradd <username> 후 passwd <username>을 통해 비밀번호를 설정해주어야 로그인이 가능하다.
+- chage
+  - 사용자 계정의 암호 만료 정보를 수정하는 데 사용
+  - 시스템 관리자는 최대 및 최소 암호 사용 기간, 암호 만료 경고 기간 및 너무 많은 로그인 시도 후 계정 잠금 등 다양한 암호 정책 설정을 변경할 수 있다.
+  - 옵션
+    - d <날짜>
+      - 계정의 마지막 암호 변경일을 날짜 이전으로 설정
+    - E <만료 날짜>
+      - 계정의 만료 날짜를 만료 날짜로 설정
+    - I <비활성화 기간>
+      - 계정이 비활성화 되는 기간을 비활성화 기간으로 설정
+    - m <최소 일수>
+      - 암호를 변경할 수 있는 최소 일수를 최소 일수로 설정
+    - M <최대 일수>
+      - 암호를 변경해야 하는 최대 일수를 최대 일수로 설정
+    - W <날짜>
+      - 암호 만료 경고를 발생시키는 일수를 날짜로 설정
+- /etc/login.defs
+  - pass_max_days, pass_min_days 변경으로 사용자 암호 만료 정보 수정
+- libpam-cracklib
+  - libpam-cracklib는 debian에서 사용자 암호를 검증하는데 사용하는 모듈
+  1.  libpam-cracklib 설치 (sudo apt-get install libpam-cracklib)
+  2.  /etc/pam.d/common-passwd 파일을 편집
+      - minlen, ucredit, lcredit, dcredit, ocredit은 각각 대문자 소문자 숫자 특수 문자를 지정
+      - maxrepeat : 최대 같은 문자 반복횟수 지정, reject_username
+- pam(pluggable Authentication Module: 착탈형 인증 모듈)
+  - 사용자를 인증하고 그 사용자의 서비스에 대한 엑세스를 제어하는 모듈화된 기법.
+  - https://www.igloo.co.kr/security-information/%EB%A6%AC%EB%88%85%EC%8A%A4-pam-%EB%AA%A8%EB%93%88%EC%9D%98-%EC%9D%B4%ED%95%B4/
