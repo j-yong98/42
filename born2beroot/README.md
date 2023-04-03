@@ -97,14 +97,17 @@ SElinux와 AppArmor
       - 암호를 변경해야 하는 최대 일수를 최대 일수로 설정
     - W <날짜>
       - 암호 만료 경고를 발생시키는 일수를 날짜로 설정
-- /etc/login.defs
-  - pass_max_days, pass_min_days 변경으로 사용자 암호 만료 정보 수정
-- libpam-cracklib
-  - libpam-cracklib는 debian에서 사용자 암호를 검증하는데 사용하는 모듈
-  1.  libpam-cracklib 설치 (sudo apt-get install libpam-cracklib)
-  2.  /etc/pam.d/common-passwd 파일을 편집
-      - minlen, ucredit, lcredit, dcredit, ocredit은 각각 대문자 소문자 숫자 특수 문자를 지정
-      - maxrepeat : 최대 같은 문자 반복횟수 지정, reject_username
-- pam(pluggable Authentication Module: 착탈형 인증 모듈)
-  - 사용자를 인증하고 그 사용자의 서비스에 대한 엑세스를 제어하는 모듈화된 기법.
-  - https://www.igloo.co.kr/security-information/%EB%A6%AC%EB%88%85%EC%8A%A4-pam-%EB%AA%A8%EB%93%88%EC%9D%98-%EC%9D%B4%ED%95%B4/
+  
+설정 관련
+-
+  - /etc/login.defs
+    - pass_max_days, pass_min_days 변경으로 사용자 암호 만료 정보 수정
+  - libpam-cracklib
+    - libpam-cracklib는 debian에서 사용자 암호를 검증하는데 사용하는 모듈
+    1.  libpam-cracklib 설치 (sudo apt-get install libpam-cracklib)
+    2.  /etc/pam.d/common-passwd 파일을 편집
+        - minlen, ucredit, lcredit, dcredit, ocredit은 각각 대문자 소문자 숫자 특수 문자를 지정
+        - maxrepeat : 최대 같은 문자 반복횟수 지정, reject_username
+  - pam(pluggable Authentication Module: 착탈형 인증 모듈)
+    - 사용자를 인증하고 그 사용자의 서비스에 대한 엑세스를 제어하는 모듈화된 기법.
+    - https://www.igloo.co.kr/security-information/%EB%A6%AC%EB%88%85%EC%8A%A4-pam-%EB%AA%A8%EB%93%88%EC%9D%98-%EC%9D%B4%ED%95%B4/
