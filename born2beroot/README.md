@@ -64,8 +64,9 @@ SElinux와 AppArmor
   - AppArmor는 각 응용 프로그램에 대한 보안 프로파일을 만들어 실행 중 프로그램이 할 수 있는 동작을 제한한다.
   - AppArmor는 SElinux 보다 적극적이진 않지만, 간단한 구성과 응용 프로그램이 작동하는데 더 많은 유연성 제공
   
-명령어
+그룹설정
 -
+- 사용자를 user42와 sudo 그룹에 포함시켜라
 - gpasswd
   - /etc/group과 /etc/gshadow를 관리하는 명령어
   - 옵션
@@ -81,6 +82,50 @@ SElinux와 AppArmor
 - useradd
   - useradd는 새로운 사용자를 추가하는 명령어
   - useradd <username> 후 passwd <username>을 통해 비밀번호를 설정해주어야 로그인이 가능하다.
+- id <사용자>를 통해 사용자가 속한 그룹을 확인할 수 있다.
+  
+ssh와 ufw
+-
+- ssh
+  - 네트워크 프로토콜 중 하나로, 안전하게 통신할 수 있게 암호화된 연결을 제공한다.
+  - 서버 인증
+    - 클라이언트는 서버로 요청을 보내게 되면 서버에서 자신의 공개키를 전송한다.
+    - 최초 접속 시, 서버의 공개키를 저장할 것인지 묻게 된다. -> 저장 시 known_hosts에 저장된다.
+    - 이후에 접속 시 로컬에 저장된 공개키가 서버의 공개키와 같은지 비교하여 올바른 서버인지 판단.
+    - 이 과정에서 데이터 통신과정에 필요한 대칭키를 생성
+      - 클라이언트는 서버의 공개키로 난수 값을 생성하여 전송
+      - 서버가 공개키로 해시값을 얻은 후 클라이언트로 전송
+      - 클라이언트는 전송 받은 결과와 비교하여 올바른 값이면 정상적인 서버로 판단
+  - 사용자 인증
+    - 서버 인증과 원리는 같지만 서버와 클라이언트가 바뀐다.
+    - 서버에 클라이언트의 공개키를 보낸다.
+    - 서버는 받은 공개키로 난수를 발생시키고 해시값을 만들어 저장
+    - 난수를 클라이언트에 전송.
+    - 난수를 비밀키로 복호화 후 해시값을 얻고 서버에 전송
+    - 서버는 해시값을 비교해 정상적인 사용자인지 판단.
+ - 가상 머신 포트 포워딩
+    - 포트 포워딩 : 포트를 전달해 주는 것. 가상 머신의 네트워크 주소와 실제 네트워크 주소가 다르기 때문에 가상 머신으로 연결해 주어야 한다.
+    <img width="1282" alt="image" src="https://user-images.githubusercontent.com/120557342/230057556-e039c468-3fd5-4dc6-b7f1-518cd91bebe9.png">
+    <img width="1282" alt="image" src="https://user-images.githubusercontent.com/120557342/230057678-7df3135f-b5a4-48b0-a7bc-6ffefaf5277d.png">
+    - DHCP로 동적으로 IP주소 및 서브넷 마스크 및 기본 게이트 웨이를 설정해주기 때문에 호스트 IP와 게스트 IP는 설정하지 않고 포트만 설정해 주었다.
+    - virtualBox의 네트워크 설정
+    
+      ||게스트->호스트|게스트<-호스트|게스트1<->게스트2|게스트->인터넷|게스트<-인터넷|
+      |---|---|---|---|---|---|
+      |호스트 전용 어댑터|O|O|O|X|X|
+      |내부  네트워크|X|X|O|X|X|
+      |브릿지 네트워크|O|O|O|O|O|
+      |NAT|X|포트 포워딩|X|O|포트 포워딩|
+      |NAT 네트워크|X|포트 포워딩|O|O|포트 포워딩|
+    ```
+    DHCP : TCP/IP 프로토콜의 기본 설정을 클라이언트에게 자동으로 제공해주는 프로토콜
+    NAT은 DHCP로 ip
+    ```
+- ufw
+  - 방화벽으로 특정 포트나 ip에 대해 접근을 허용/거부 가능
+  
+암호 정책
+-
 - chage
   - 사용자 계정의 암호 만료 정보를 수정하는 데 사용
   - 시스템 관리자는 최대 및 최소 암호 사용 기간, 암호 만료 경고 기간 및 너무 많은 로그인 시도 후 계정 잠금 등 다양한 암호 정책 설정을 변경할 수 있다.
@@ -98,16 +143,22 @@ SElinux와 AppArmor
     - W <날짜>
       - 암호 만료 경고를 발생시키는 일수를 날짜로 설정
   
-설정 관련
+  설정 관련
+  -
+    - /etc/login.defs
+      - pass_max_days, pass_min_days 변경으로 사용자 암호 만료 정보 수정
+    - libpam-cracklib
+      - libpam-cracklib는 debian에서 사용자 암호를 검증하는데 사용하는 모듈
+      1.  libpam-cracklib 설치 (sudo apt-get install libpam-cracklib)
+      2.  /etc/pam.d/common-passwd 파일을 편집
+          - minlen, ucredit, lcredit, dcredit, ocredit은 각각 대문자 소문자 숫자 특수 문자를 지정
+          - maxrepeat : 최대 같은 문자 반복횟수 지정, reject_username
+    - pam(pluggable Authentication Module: 착탈형 인증 모듈)
+      - 사용자를 인증하고 그 사용자의 서비스에 대한 엑세스를 제어하는 모듈화된 기법.
+      - https://www.igloo.co.kr/security-information/%EB%A6%AC%EB%88%85%EC%8A%A4-pam-%EB%AA%A8%EB%93%88%EC%9D%98-%EC%9D%B4%ED%95%B4/
+      
+sudo 정책
 -
-  - /etc/login.defs
-    - pass_max_days, pass_min_days 변경으로 사용자 암호 만료 정보 수정
-  - libpam-cracklib
-    - libpam-cracklib는 debian에서 사용자 암호를 검증하는데 사용하는 모듈
-    1.  libpam-cracklib 설치 (sudo apt-get install libpam-cracklib)
-    2.  /etc/pam.d/common-passwd 파일을 편집
-        - minlen, ucredit, lcredit, dcredit, ocredit은 각각 대문자 소문자 숫자 특수 문자를 지정
-        - maxrepeat : 최대 같은 문자 반복횟수 지정, reject_username
-  - pam(pluggable Authentication Module: 착탈형 인증 모듈)
-    - 사용자를 인증하고 그 사용자의 서비스에 대한 엑세스를 제어하는 모듈화된 기법.
-    - https://www.igloo.co.kr/security-information/%EB%A6%AC%EB%88%85%EC%8A%A4-pam-%EB%AA%A8%EB%93%88%EC%9D%98-%EC%9D%B4%ED%95%B4/
+- sudo를 사용하게 되면 일반 사용자가 일시적으로 root의 권한을 얻게 된다.
+- sudo에 관련 설정은 /etc/sudoers 파일에 하면 된다.
+- Defaults는 기본적으로 sudo를 실행할 때 적용되는 전역적인 설정을 하는 옵션
