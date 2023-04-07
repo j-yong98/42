@@ -162,3 +162,48 @@ sudo 정책
 - sudo를 사용하게 되면 일반 사용자가 일시적으로 root의 권한을 얻게 된다.
 - sudo에 관련 설정은 /etc/sudoers 파일에 하면 된다.
 - Defaults는 기본적으로 sudo를 실행할 때 적용되는 전역적인 설정을 하는 옵션
+- badbass_message, authfail_message, requiretty, passwd_tries, logfile=경로, log_input, log_output 등 다양한 옵션이 있다.  
+```
+tty란?
+terminaltyepwriter의 약자로 리눅스 디바이스 드라이브 중 터미널이나 콘솔을 의미한다.
+명령어를 입력하고 결과를 출력하기 위한 콘솔 세션을 의미하고 다른 tty와 별도의 프로세스 그룹을 가지고 있다.
+```
+
+monitoring.sh
+-
+- 운영체제와 커널의 버전에 대한 구조
+  - uname 명령어를 사용하면 시스템에 대한 정보 출력
+- 물리 프로세서의 수
+  - nproc을 사용
+- 가상 프로세서의 수
+  - /proc/cpuinfo에서 관련 정보 출력
+- RAM 사용률
+  - free 명령어를 사용하면 메모리의 사용에 대한 정보가 나온다
+- disk 사용률
+  - df 명령어를 사용하면 disk에 대한 정보가 나온다. -B옵션을 통해 출력 단위를 설정할 수 있다.
+- cpu 사용률
+  - apt-get install sysstat을 설치 후 mpstat 명령어를 사용하면 현재 cpu의 사용률이 나온다. 이 외에 top 명령어 등이 있다.
+- 마지막 부팅시간
+  - who 명령어를 사용 시 현재 로그인된 사용자의 정보가 나온다. -b 옵션을 주게 되면 최근 부팅 시간에 대한 정보가 나온다
+- lvm 활성화 여부
+  - lsblk 명령어를 통해 파티션의 정보를 가지고 lvm이 있으면 yes를 출력하도록 했다.
+  ```
+  쉘 스크립트 if 사용법 (대괄호 뒤에 공백을 넣어 줘야한다.
+  if [ (비교문) ]; then
+  ~~
+  else
+  ~~
+  fi
+  ```
+- tcp를 사용해 서버를 사용하는 유저 수
+  - ss 명령어를 사용하게 되면 소켓에 관련된 정보가 나오게 된다. 이 중에 tcp관련 소켓만 보려면 -t옵션을 주면 된다.
+- 서버의 IPv4와 mac주소
+  - hostname -I를 사용하게 되면 현재 서버의 ip주소를 얻을 수 있다.
+  - mac 주소는 ip 명령어를 사용
+- sudo 프로그램으로 실행된 명령의 수
+  - journalctl 명령어를 사용하면 현재 system의 로그 정보를 얻을 수 있다.
+  - journalctl 명령어를 사용해 _COMM=sudo or /usr/bin/sudo sudo를 사용한 부분만 가져온다.
+  
+- 해당 쉘 스크립트를 주기적으로 실행하기 위해 작업 예약 스케줄러 cron을 사용
+- cron -e 에 * * * * * <동작>
+   min/hour/day of month/month/day of week
