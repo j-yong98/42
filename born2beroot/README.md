@@ -155,7 +155,7 @@ ssh와 ufw
           - maxrepeat : 최대 같은 문자 반복횟수 지정, reject_username
     - pam(pluggable Authentication Module: 착탈형 인증 모듈)
       - 사용자를 인증하고 그 사용자의 서비스에 대한 엑세스를 제어하는 모듈화된 기법.
-      - https://www.igloo.co.kr/security-information/%EB%A6%AC%EB%88%85%EC%8A%A4-pam-%EB%AA%A8%EB%93%88%EC%9D%98-%EC%9D%B4%ED%95%B4/
+      - [PAM ](https://www.igloo.co.kr/security-information/%EB%A6%AC%EB%88%85%EC%8A%A4-pam-%EB%AA%A8%EB%93%88%EC%9D%98-%EC%9D%B4%ED%95%B4/)
       
 sudo 정책
 -
