@@ -205,5 +205,53 @@ monitoring.sh
   - journalctl 명령어를 사용해 _COMM=sudo or /usr/bin/sudo sudo를 사용한 부분만 가져온다.
   
 - 해당 쉘 스크립트를 주기적으로 실행하기 위해 작업 예약 스케줄러 cron을 사용
-- cron -e 에 * * * * * <동작>
+- cron -e 에 * * * * * <동작>  
    min/hour/day of month/month/day of week
+   
+보너스
+-
+- 자신만의 웹 서비스 구축하기(wordpress, lighttpd, mariadb, php 사용)
+- lighttpd : 경량형 웹서버 (설치전 아파치 확인- 충돌 일어날 수 있음.) /etc/lighttpd/
+  ~~~
+  sudo apt install lighttpd
+  sudo systemctl start lighttpd
+  sudo systemctl enable lighttpd
+  sudo ufw allow http
+  ~~~
+- mariadb : 오픈 소스 DBMS. MySql과 동일한 소스 코드
+  ~~~
+  sudo apt install mariadb-server
+  sudo systemctl start mariadb
+  sudo systemctl enable mariadb
+  sudo mysql_secure_installation (mysql 기본 보안 설정(익명 사용자, 루트 비밀번호 등)
+  sudo systemctl restart mariadb
+  -- 이후 루트 계정으로 DB로그인 후 user(관리자)를 생성하고 권한을 설정
+  mysql -u root -p
+  create database wordpress;
+  create user 'admin'@'localhost' identified by 'password'
+  grant all on wordpress.* to 'admin'@'localhost' identified by 'password' with grant option;
+  flush privileges (변경 사항을 적용하기, grant table을 reload한다함)
+  ~~~
+- php : 서버 사이드 스크립트 언어
+  ~~~
+  sudo apt install php
+  @php ver7.4
+  ~~~
+- wordpress : 콘텐츠 관리 시스템
+- /etc/lighttpd/lighttpd.conf 파일을 열어보면 document/root가 /var/www/html로 설정 되어 있다.
+  ~~~
+  wget http://wordpress.org/latest.tar.gz 
+  tar -xvzf latest.tar.gz
+  sudo mv wordpress/* /var/www/html/
+  ~~~
+  아래 사진과 같이 wp-config-sample.php의 db정보 부분을 위에서 설정한 것으로 변경한 후 이름을 wp-config.php로 변경
+  ![image](https://user-images.githubusercontent.com/120557342/230721582-6ec1f45e-297d-4396-91b1-fb0cd8b52f80.png)  
+  권한 설정을 해주지 않으니 403 forbbiden
+  ~~~
+  sudo chown -R www-data:www-data /var/www/html
+  sudo chmod 755 /var/www/html
+  sudo systemctl restart lighttpd
+  ~~~
+  localhost:8080 or ip:8080
+  이후 접속하면 설정 페이지가 나오게 된다.
+  ![image](https://user-images.githubusercontent.com/120557342/230721814-35e15caa-62c3-4067-8bf5-7f9fab95fc77.png)
