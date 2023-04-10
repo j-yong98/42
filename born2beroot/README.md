@@ -155,7 +155,7 @@ ssh와 ufw
           - maxrepeat : 최대 같은 문자 반복횟수 지정, reject_username
     - pam(pluggable Authentication Module: 착탈형 인증 모듈)
       - 사용자를 인증하고 그 사용자의 서비스에 대한 엑세스를 제어하는 모듈화된 기법.
-      - [PAM ](https://www.igloo.co.kr/security-information/%EB%A6%AC%EB%88%85%EC%8A%A4-pam-%EB%AA%A8%EB%93%88%EC%9D%98-%EC%9D%B4%ED%95%B4/)
+      - [PAM?](https://www.igloo.co.kr/security-information/%EB%A6%AC%EB%88%85%EC%8A%A4-pam-%EB%AA%A8%EB%93%88%EC%9D%98-%EC%9D%B4%ED%95%B4/)
       
 sudo 정책
 -
@@ -246,11 +246,19 @@ monitoring.sh
   ~~~
   아래 사진과 같이 wp-config-sample.php의 db정보 부분을 위에서 설정한 것으로 변경한 후 이름을 wp-config.php로 변경
   ![image](https://user-images.githubusercontent.com/120557342/230721582-6ec1f45e-297d-4396-91b1-fb0cd8b52f80.png)  
-  권한 설정을 해주지 않으니 403 forbbiden
+  403 forbbiden시 확인 사항 - 웹서버의 권한 설정
   ~~~
+  //권한 설정
   sudo chown -R www-data:www-data /var/www/html
   sudo chmod 755 /var/www/html
   sudo systemctl restart lighttpd
+  //php cgi 패키지 설치
+  sudo apt-get install php-cgi
+  sudo lighttpd-enable-mod fastcgi-php
+  ***
+  cgi란?
+  cgi(common-gateway-interface)로 웹서버와 외부 프로그램간의 인터페이스로 웹서버에 요청이 오면 해당 요청을 처리하기 위해 웹서버는 cgi를 실행하여 웹서버와 표준 입출력, 환경변수 및 기타 파일 디스크립터를 통해 통신을 하게 된다. 이렇게 생성된 결과를 반환한다.
+  ***
   ~~~
   localhost:8080 or ip:8080
   이후 접속하면 설정 페이지가 나오게 된다.
