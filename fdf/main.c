@@ -6,7 +6,7 @@
 /*   By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 20:29:18 by jaeychoi          #+#    #+#             */
-/*   Updated: 2023/04/12 20:23:17 by jaeychoi         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:35:18 by jaeychoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int	main(int argc, char **argv)
 	valid_extension(argv[1]);
 	valid_file(argv[1]);
 	map = map_reader(argv[1]);
-	draw();
+	make_mlx(map);
 	return (0);
 }

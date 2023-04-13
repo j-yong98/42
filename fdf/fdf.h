@@ -6,7 +6,7 @@
 /*   By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 20:27:52 by jaeychoi          #+#    #+#             */
-/*   Updated: 2023/04/13 15:07:28 by jaeychoi         ###   ########.fr       */
+/*   Updated: 2023/04/13 18:19:26 by jaeychoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@
 # include <fcntl.h>
 # include "get_next_line.h"
 # include "libft.h"
-# include <stdio.h>
-# include <string.h>
 # include "minilibx/mlx.h"
+# include <stdio.h>
+# include <math.h>
+# define ESC 53
+# define SIZE 80
+# define DIST 30
 
 typedef struct t_map
 {
@@ -27,7 +30,20 @@ typedef struct t_map
 	int		**map;
 }	t_map;
 
-void	draw(void);
+typedef struct t_vars
+{
+	void	*mlx;
+	void	*win;
+}	t_vars;
+
+typedef struct t_pos
+{
+	int	now[2];
+	int	next[2];
+}	t_pos;
+
+void	make_mlx(t_map *map);
+void	draw(t_map *map, t_vars *vars);
 char	**row_split(char *line);
 void	free_all(char **split);
 int		*convert_int(char **split, size_t col);
