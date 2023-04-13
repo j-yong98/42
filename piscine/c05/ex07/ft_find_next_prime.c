@@ -1,24 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 11:10:50 by jaeychoi          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/11 19:34:44 by jaeychoi         ###   ########.fr       */
-=======
-/*   Updated: 2023/03/14 16:17:51 by jaeychoi         ###   ########.fr       */
->>>>>>> bfd7205452947754ad6a438d8d5f1739a5f727ae
+/*   Created: 2023/01/18 20:24:25 by jaeychoi          #+#    #+#             */
+/*   Updated: 2023/01/22 11:27:13 by jaeychoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_isdigit(int c)
+int	get_next_prime(int i)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	int	flag;
+	int	j;
+
+	while (1)
+	{
+		flag = 1;
+		j = 2;
+		while (j <= i / j)
+		{
+			if (i % j == 0)
+			{
+				flag = 0;
+				break ;
+			}
+			j++;
+		}
+		if (flag)
+			break ;
+		i++;
+	}
+	return (i);
+}
+
+int	ft_find_next_prime(int nb)
+{
+	int	i;
+
+	if (nb < 2)
+		i = 2;
+	else
+		i = nb;
+	return (get_next_prime(i));
 }

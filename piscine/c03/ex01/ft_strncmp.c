@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 11:10:50 by jaeychoi          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/11 19:34:44 by jaeychoi         ###   ########.fr       */
-=======
-/*   Updated: 2023/03/14 16:17:51 by jaeychoi         ###   ########.fr       */
->>>>>>> bfd7205452947754ad6a438d8d5f1739a5f727ae
+/*   Created: 2023/01/15 20:03:25 by jaeychoi          #+#    #+#             */
+/*   Updated: 2023/01/17 22:29:59 by jaeychoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_isdigit(int c)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
+	unsigned char	*u_s1;
+	unsigned char	*u_s2;
+	unsigned int	idx;
+
+	idx = 0;
+	u_s1 = (unsigned char *) s1;
+	u_s2 = (unsigned char *) s2;
+	while ((*(u_s1) || *(u_s2)) && idx < n)
+	{
+		if (*(u_s1) != *(u_s2))
+			return (*(u_s1) - *(u_s2));
+		u_s1++;
+		u_s2++;
+		idx++;
+	}
 	return (0);
 }

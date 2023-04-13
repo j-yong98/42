@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 11:10:50 by jaeychoi          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/11 19:34:44 by jaeychoi         ###   ########.fr       */
-=======
-/*   Updated: 2023/03/14 16:17:51 by jaeychoi         ###   ########.fr       */
->>>>>>> bfd7205452947754ad6a438d8d5f1739a5f727ae
+/*   Created: 2023/03/21 20:33:52 by jaeychoi          #+#    #+#             */
+/*   Updated: 2023/03/22 14:05:32 by jaeychoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
+# include <stdarg.h>
+# include <unistd.h>
+
+int	ft_printf(const char *format, ...);
+int	conversion(const char type, va_list ptr);
+int	ft_print_hex(unsigned int num, int classify);
+int	ft_print_ptr(unsigned long long ptr);
+int	ft_print_decimal(int num);
+int	ft_print_unsigned(unsigned int num);
+int	ft_putch(int c);
+int	ft_puts(char *str);
+#endif

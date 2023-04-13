@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 11:10:50 by jaeychoi          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/11 19:34:44 by jaeychoi         ###   ########.fr       */
-=======
-/*   Updated: 2023/03/14 16:17:51 by jaeychoi         ###   ########.fr       */
->>>>>>> bfd7205452947754ad6a438d8d5f1739a5f727ae
+/*   Created: 2023/01/26 09:45:46 by jaeychoi          #+#    #+#             */
+/*   Updated: 2023/01/30 20:18:40 by jaeychoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-int	ft_isdigit(int c)
+int	*ft_map(int *tab, int length, int (*f)(int))
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	int	idx;
+	int	*arr;
+
+	arr = (int *)malloc(sizeof(int) * length);
+	if (arr == 0)
+		return (0);
+	idx = 0;
+	while (idx < length)
+	{
+		*(arr + idx) = f(*(tab + idx));
+		idx++;
+	}
+	return (arr);
 }

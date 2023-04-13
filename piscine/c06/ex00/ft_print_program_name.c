@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_print_program_name.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 11:10:50 by jaeychoi          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/11 19:34:44 by jaeychoi         ###   ########.fr       */
-=======
-/*   Updated: 2023/03/14 16:17:51 by jaeychoi         ###   ########.fr       */
->>>>>>> bfd7205452947754ad6a438d8d5f1739a5f727ae
+/*   Created: 2023/01/19 13:44:14 by jaeychoi          #+#    #+#             */
+/*   Updated: 2023/01/21 22:59:01 by jaeychoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
-int	ft_isdigit(int c)
+int	main(int argc, char **argv)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
+	(void) argc;
+	while (*(argv[0]))
+	{
+		write(1, argv[0], 1);
+		argv[0]++;
+	}
+	write(1, "\n", 1);
 	return (0);
 }

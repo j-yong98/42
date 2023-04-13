@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 11:10:50 by jaeychoi          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/11 19:34:44 by jaeychoi         ###   ########.fr       */
-=======
-/*   Updated: 2023/03/14 16:17:51 by jaeychoi         ###   ########.fr       */
->>>>>>> bfd7205452947754ad6a438d8d5f1739a5f727ae
+/*   Created: 2023/01/22 21:48:54 by jaeychoi          #+#    #+#             */
+/*   Updated: 2023/01/26 09:29:34 by jaeychoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-int	ft_isdigit(int c)
+int	*ft_range(int min, int max)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	int	a_size;
+	int	i;
+	int	*arr;
+
+	if (min >= max)
+		return (0);
+	a_size = max - min;
+	arr = (int *)malloc(sizeof(int) * a_size);
+	if (arr == NULL)
+		return (0);
+	i = 0;
+	while (min < max)
+	{
+		*(arr + i) = min++;
+		i++;
+	}
+	return (arr);
 }

@@ -1,24 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 11:10:50 by jaeychoi          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/11 19:34:44 by jaeychoi         ###   ########.fr       */
-=======
-/*   Updated: 2023/03/14 16:17:51 by jaeychoi         ###   ########.fr       */
->>>>>>> bfd7205452947754ad6a438d8d5f1739a5f727ae
+/*   Created: 2023/01/17 10:44:37 by jaeychoi          #+#    #+#             */
+/*   Updated: 2023/01/19 09:42:40 by jaeychoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
-int	ft_isdigit(int c)
+void	print_number(unsigned int nb)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	char	c;
+
+	if (nb == 0)
+		return ;
+	c = nb % 10 + '0';
+	print_number(nb / 10);
+	write(1, &c, 1);
+}
+
+void	ft_putnbr(int nb)
+{
+	unsigned int	u_nb;
+
+	if (nb == 0)
+	{
+		write(1, "0", 1);
+		return ;
+	}
+	if (nb < 0)
+	{
+		write(1, "-", 1);
+		u_nb = -nb;
+	}
+	else
+		u_nb = nb;
+	print_number(u_nb);
 }

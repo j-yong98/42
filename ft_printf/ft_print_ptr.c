@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 11:10:50 by jaeychoi          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/11 19:34:44 by jaeychoi         ###   ########.fr       */
-=======
-/*   Updated: 2023/03/14 16:17:51 by jaeychoi         ###   ########.fr       */
->>>>>>> bfd7205452947754ad6a438d8d5f1739a5f727ae
+/*   Created: 2023/03/21 13:22:47 by jaeychoi          #+#    #+#             */
+/*   Updated: 2023/03/22 12:00:58 by jaeychoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_isdigit(int c)
+int	ft_print_ptr(unsigned long long p)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	int	len;
+	int	tmp;
+
+	len = 0;
+	if (p / 16 == 0)
+	{
+		if (write(1, &"0123456789abcdef"[p % 16], 1) < 0)
+			return (-1);
+		return (len + 1);
+	}
+	tmp = ft_print_ptr(p / 16);
+	if (tmp < 0 || write(1, &"0123456789abcdef"[p % 16], 1) < 0)
+		return (-1);
+	len += tmp;
+	return (len + 1);
 }

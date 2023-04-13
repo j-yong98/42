@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_count_if.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 11:10:50 by jaeychoi          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/11 19:34:44 by jaeychoi         ###   ########.fr       */
-=======
-/*   Updated: 2023/03/14 16:17:51 by jaeychoi         ###   ########.fr       */
->>>>>>> bfd7205452947754ad6a438d8d5f1739a5f727ae
+/*   Created: 2023/01/29 13:21:59 by jaeychoi          #+#    #+#             */
+/*   Updated: 2023/01/30 20:21:38 by jaeychoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_isdigit(int c)
+int	ft_count_if(char **tab, int length, int (*f)(char*))
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	int	idx;
+	int	cnt;
+
+	idx = 0;
+	cnt = 0;
+	while (idx < length)
+	{
+		if (f(*(tab + idx)))
+			cnt++;
+		idx++;
+	}
+	return (cnt);
 }

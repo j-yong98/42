@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+        */
+/*   By: jelee2 <jelee2@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 11:10:50 by jaeychoi          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/11 19:34:44 by jaeychoi         ###   ########.fr       */
-=======
-/*   Updated: 2023/03/14 16:17:51 by jaeychoi         ###   ########.fr       */
->>>>>>> bfd7205452947754ad6a438d8d5f1739a5f727ae
+/*   Created: 2023/01/30 14:13:15 by jelee2            #+#    #+#             */
+/*   Updated: 2023/02/01 21:22:29 by jelee2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "solve.h"
+#include <stdlib.h>
 
-int	ft_isdigit(int c)
+int	main(int argc, char **argv)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
+	int	i;
+
+	if (argc > 1)
+	{
+		i = 1;
+		while (i < argc)
+		{
+			solve(argv[i]);
+			i++;
+		}
+	}
+	else
+	{
+		solve(NULL);
+	}
+	exit(0);
 	return (0);
 }

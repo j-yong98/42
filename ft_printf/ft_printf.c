@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 11:10:50 by jaeychoi          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/11 19:34:44 by jaeychoi         ###   ########.fr       */
-=======
-/*   Updated: 2023/03/14 16:17:51 by jaeychoi         ###   ########.fr       */
->>>>>>> bfd7205452947754ad6a438d8d5f1739a5f727ae
+/*   Created: 2023/03/20 10:37:35 by jaeychoi          #+#    #+#             */
+/*   Updated: 2023/03/28 20:53:32 by jaeychoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_isdigit(int c)
+int	ft_printf(const char *format, ...)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	va_list	ap;
+	int		cnt;
+	int		tmp;
+
+	cnt = 0;
+	va_start(ap, format);
+	while (*format)
+	{
+		if (*format == '%')
+			tmp = conversion(*++format, ap);
+		else
+			tmp = ft_putch(*format);
+		if (tmp < 0)
+			return (-1);
+		cnt += tmp;
+		format++;
+	}
+	va_end(ap);
+	return (cnt);
 }
