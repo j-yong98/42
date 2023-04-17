@@ -40,10 +40,12 @@ fdf
 		$$d_1 - d_2 = m(x_k + 1) + c - y_k - (y_k + 1 - m(x_k + 1) - c) \\ $$
 		$$\quad = m(x_k + 1) + c - y_k - y_k - 1 + m(x_k + 1) + c \\ $$
 		$$\quad = 2m(x_k + 1) - 2y_k + 2c - 1$$
+		<br>
 		$$\Delta x(d_1 - d_2) = 2\Delta y (x_k + 1) -2\Delta x y_k + 2\Delta x c - \Delta x \\ $$
 		$$\quad = 2\Delta yx_k + 2\Delta y - 2\Delta x y_k + 2\Delta x c - \Delta x$$
 		$$실제 값에 2 \Delta y x_k와 2\Delta x y_k 만 종속 되므로 나머지 값은 무시한다. \\ $$
 		$$\quad\ \therefore p_k = 2 \Delta y x_k - 2\Delta x y_k \\ $$
+		<br>
 		$$p_{next} = 2 \Delta y x_{next} - 2\Delta x y_{next}$$
 		$$p_{next} - p_k = 2\Delta y x_{next} - 2\Delta x y_{next} - (2 \Delta y x_k - 2\Delta x y_k) $$
 		$$\quad = 2\Delta y x_{next} - 2\Delta x y_{next} - 2 \Delta y x_k + 2\Delta x y_k$$
