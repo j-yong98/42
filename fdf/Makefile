@@ -6,7 +6,7 @@
 #    By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/31 19:50:00 by jaeychoi          #+#    #+#              #
-#    Updated: 2023/04/14 17:55:58 by jaeychoi         ###   ########.fr        #
+#    Updated: 2023/04/18 14:02:48 by jaeychoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ SRCS = main.c \
 	   map_reader2.c \
 	   mlx.c
 
-OBJS = $(SRCS:.c=.o)
+OBJS = $(addprefix srcs/, $(SRCS:.c=.o))
 
 all : $(MLX) $(NAME)
 
@@ -52,7 +52,7 @@ $(MLX) :
 	@make -C $(MLX_P)
 
 %.o : %.c
-	$(CC) -c $(CFLAGS) $< -I $(LIBFT_P) -I $(GNL_P) -I $(MLX_P)
+	$(CC) -c $(CFLAGS) -o $@ $< -I $(LIBFT_P) -I $(GNL_P) -I $(MLX_P)
 
 clean :
 	@make -C $(GNL_P) clean

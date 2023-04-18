@@ -6,7 +6,7 @@
 /*   By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 20:27:52 by jaeychoi          #+#    #+#             */
-/*   Updated: 2023/04/14 18:13:16 by jaeychoi         ###   ########.fr       */
+/*   Updated: 2023/04/18 14:00:47 by jaeychoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <fcntl.h>
 # include "get_next_line.h"
 # include "libft.h"
-# include "minilibx/mlx.h"
+# include "../minilibx/mlx.h"
 # include <stdio.h>
 # include <math.h>
 # define ESC 53
