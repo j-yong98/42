@@ -1,0 +1,3 @@
+[submodule "fdf/gnl"]
+	path = fdf/gnl
+	url = https://github.com/j-yong98/42.git/get_next_line

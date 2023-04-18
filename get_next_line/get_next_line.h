@@ -6,7 +6,7 @@
 /*   By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 14:11:28 by jaeychoi          #+#    #+#             */
-/*   Updated: 2023/03/29 14:19:05 by jaeychoi         ###   ########.fr       */
+/*   Updated: 2023/03/31 21:14:42 by jaeychoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-size_t	ft_strlen(char *str);
-size_t	ft_strlcpy(char *dst, char *src, size_t len, size_t s_len);
-size_t	ft_strlcat(char *dst, char *src, size_t len);
+size_t	ft_strllen(char *str);
+size_t	ft_strllcpy(char *dst, char *src, size_t len, size_t s_len);
+size_t	ft_strllcat(char *dst, char *src, size_t len);
 void	*ft_expand(void *ptr, size_t size, int len);
 int		find_new_line(char *str, int *s);
 char	*read_save(char *buf, int *s);

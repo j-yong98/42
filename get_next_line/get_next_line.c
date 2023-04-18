@@ -6,7 +6,7 @@
 /*   By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 14:09:58 by jaeychoi          #+#    #+#             */
-/*   Updated: 2023/03/28 19:51:14 by jaeychoi         ###   ########.fr       */
+/*   Updated: 2023/03/31 21:13:27 by jaeychoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ char	*read_buf(char *res, char *buf, int *s, int r)
 	int	len;
 
 	idx = find_new_line(buf, s);
-	len = ft_strlen(res);
+	len = ft_strllen(res);
 	if (idx == -1)
 		idx = r;
 	res = ft_expand(res, idx, len);
 	if (!res)
 		return (NULL);
-	ft_strlcat(res, buf, len + idx + 1);
-	ft_strlcpy(buf, buf + idx, BUFFER_SIZE + 1, BUFFER_SIZE - idx);
+	ft_strllcat(res, buf, len + idx + 1);
+	ft_strllcpy(buf, buf + idx, BUFFER_SIZE + 1, BUFFER_SIZE - idx);
 	return (res);
 }
 
@@ -35,7 +35,7 @@ char	*read_save(char *buf, int *s)
 	int		idx;
 	int		len;
 
-	len = ft_strlen(buf);
+	len = ft_strllen(buf);
 	if (!len)
 		return (NULL);
 	res = NULL;
@@ -45,8 +45,8 @@ char	*read_save(char *buf, int *s)
 	res = ft_expand(res, idx, 0);
 	if (!res)
 		return (NULL);
-	ft_strlcpy(res, buf, idx + 1, len);
-	ft_strlcpy(buf, buf + idx, BUFFER_SIZE + 1, BUFFER_SIZE - idx);
+	ft_strllcpy(res, buf, idx + 1, len);
+	ft_strllcpy(buf, buf + idx, BUFFER_SIZE + 1, BUFFER_SIZE - idx);
 	return (res);
 }
 
@@ -55,7 +55,7 @@ int	find_new_line(char *str, int *s)
 	int	len;
 	int	idx;
 
-	len = ft_strlen(str);
+	len = ft_strllen(str);
 	idx = 0;
 	while (idx < len)
 	{

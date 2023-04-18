@@ -6,13 +6,13 @@
 /*   By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 14:10:50 by jaeychoi          #+#    #+#             */
-/*   Updated: 2023/03/28 20:22:56 by jaeychoi         ###   ########.fr       */
+/*   Updated: 2023/04/18 13:47:34 by jaeychoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *str)
+size_t	ft_strllen(char *str)
 {
 	size_t	len;
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(char *str)
 	return (len);
 }
 
-size_t	ft_strlcpy(char *dst, char *src, size_t len, size_t s_len)
+size_t	ft_strllcpy(char *dst, char *src, size_t len, size_t s_len)
 {
 	size_t	idx;
 
@@ -39,14 +39,14 @@ size_t	ft_strlcpy(char *dst, char *src, size_t len, size_t s_len)
 	return (s_len);
 }
 
-size_t	ft_strlcat(char *dst, char *src, size_t len)
+size_t	ft_strllcat(char *dst, char *src, size_t len)
 {
 	size_t	d_len;
 	size_t	s_len;
 	size_t	idx;
 
-	d_len = ft_strlen(dst);
-	s_len = ft_strlen(src);
+	d_len = ft_strllen(dst);
+	s_len = ft_strllen(src);
 	if (d_len > len)
 		return (s_len + len);
 	idx = 0;
@@ -79,7 +79,7 @@ void	*ft_expand(void *ptr, size_t size, int len)
 		free(ptr);
 		return (NULL);
 	}
-	ft_strlcpy((char *)dst, (char *)ptr, len + size + 1, len);
+	ft_strllcpy((char *)dst, (char *)ptr, len + size + 1, len);
 	free(ptr);
 	return (dst);
 }
