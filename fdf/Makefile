@@ -6,7 +6,7 @@
 #    By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/31 19:50:00 by jaeychoi          #+#    #+#              #
-#    Updated: 2023/04/13 15:58:51 by jaeychoi         ###   ########.fr        #
+#    Updated: 2023/04/14 17:55:58 by jaeychoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ all : $(MLX) $(NAME)
 
 $(NAME) : $(GNL) $(LIBFT) $(OBJS)
 	$(CC) -g $(CFLAGS) -o $@ $(MLX_C) $^
-	   install_name_tool -change libmlx.dylib minilibx/libmlx.dylib $@	
+	install_name_tool -change libmlx.dylib minilibx/libmlx.dylib $@	
 
 $(GNL) :
 	@make -C $(GNL_P)

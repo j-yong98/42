@@ -6,7 +6,7 @@
 /*   By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 20:27:52 by jaeychoi          #+#    #+#             */
-/*   Updated: 2023/04/13 18:19:26 by jaeychoi         ###   ########.fr       */
+/*   Updated: 2023/04/14 18:13:16 by jaeychoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdio.h>
 # include <math.h>
 # define ESC 53
-# define SIZE 80
+# define SIZE 30
 # define DIST 30
 
 typedef struct t_map

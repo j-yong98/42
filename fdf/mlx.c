@@ -6,7 +6,7 @@
 /*   By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 20:18:50 by jaeychoi          #+#    #+#             */
-/*   Updated: 2023/04/13 18:40:47 by jaeychoi         ###   ########.fr       */
+/*   Updated: 2023/04/14 18:12:48 by jaeychoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	bresenham(t_pos *pos, t_vars *vars, int color)
 	while (x <= pos->next[1])
 	{
 		mlx_pixel_put(vars->mlx, vars->win, x, y, color);
+		mlx_pixel_put(vars->mlx, vars->win, y, x, color);
 		x++;
 		if (p < 0)
 			p += 2*dy;
@@ -47,26 +48,15 @@ void	draw(t_map *map, t_vars *vars)
 {
 	t_pos	pos;
 
-	/*
 	for (int i = 0; i < (int)map->row; i++) {
 		for (int j = 0; j < (int)map->col; j++) {
-				pos.now[0] = i * DIST + DIST;
-				pos.now[1] = j * DIST + DIST;
-				pos.next[0] = i * DIST + DIST;
-				pos.next[1] = (j + 1) * DIST + DIST;
-				bresenham(&pos ,vars);
+				pos.now[0] = i * DIST + SIZE;
+				pos.now[1] = j * DIST + SIZE;
+				pos.next[0] = i * DIST + SIZE;
+				pos.next[1] = (j + 1) * DIST + SIZE;
+				bresenham(&pos ,vars, get_color(map->map[i][j]));
 		}
-	}
-	*/
-	for (int i = 0; i < (int)map->row; i++) {
-		for (int j = 0; j < (int)map->row; j++) {
-			pos.now[0] = i * DIST + DIST;
-			pos.now[1] = j * DIST + DIST;
-			pos.next[0] = (i + 1) * DIST + DIST;
-			pos.next[1] = j * DIST * 2 + DIST;
-			bresenham(&pos, vars, get_color(map->map[i][j]));
-		}
-	}
+	}	
 }
 
 int	close_win(int keycode, t_vars *vars)
@@ -84,7 +74,7 @@ void	make_mlx(t_map *map)
 	t_vars	vars;
 
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, map->row * SIZE, map->col * SIZE, "test");
+	vars.win = mlx_new_window(vars.mlx, map->col * SIZE, map->row * SIZE, "test");
 	draw(map, &vars);
 	mlx_key_hook(vars.win, close_win, &vars);
 	mlx_loop(vars.mlx);
