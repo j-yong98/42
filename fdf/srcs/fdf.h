@@ -20,8 +20,8 @@
 # include <stdio.h>
 # include <math.h>
 # define ESC 53
-# define SIZE 30
-# define DIST 30
+# define SIZE 800
+# define DIST 50
 
 typedef struct t_map
 {
@@ -40,9 +40,11 @@ typedef struct t_pos
 {
 	int	now[2];
 	int	next[2];
+        int     color;
 }	t_pos;
 
 void	make_mlx(t_map *map);
+void    draw_line(t_vars *vars, t_pos* pos);
 void	draw(t_map *map, t_vars *vars);
 char	**row_split(char *line);
 void	free_all(char **split);
