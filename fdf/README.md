@@ -89,3 +89,7 @@ fdf
 			}
 		}
 		~~~
+		- 결과
+		<div align='center'>
+		<img width="611" alt="image" src="https://user-images.githubusercontent.com/120557342/234252370-aa2ee520-0532-4630-9459-5e0bd8f5fbfc.png">
+		</div>
