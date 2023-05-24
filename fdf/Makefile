@@ -32,7 +32,8 @@ SRCS = main.c \
 	   validate.c\
 	   map_reader.c \
 	   map_reader2.c \
-	   mlx.c
+	   mlx.c \
+           draw_line.c
 
 OBJS = $(addprefix srcs/, $(SRCS:.c=.o))
 

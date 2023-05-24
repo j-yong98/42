@@ -12,34 +12,6 @@
 
 #include "fdf.h"
 
-void	bresenham(t_pos *pos, t_vars *vars, int color)
-{
-	int	x;
-	int	y;
-	int	dy;
-	int	dx;
-	int	p;
-
-	y = pos->now[0];
-	x = pos->now[1];
-	dy = abs(pos->now[0] - pos->next[0]);
-	dx = abs(pos->now[1] - pos->next[1]);
-	p = 2*dy - dx;
-	while (x <= pos->next[1])
-	{
-		mlx_pixel_put(vars->mlx, vars->win, x, y, color);
-		mlx_pixel_put(vars->mlx, vars->win, y, x, color);
-		x++;
-		if (p < 0)
-			p += 2*dy;
-		else
-		{
-			p += 2*dy - 2*dx;
-			y++;
-		}
-	}
-}
-
 int	get_color(int val)
 {
 	return ((255 + 255) + (255 << val));
@@ -47,16 +19,39 @@ int	get_color(int val)
 void	draw(t_map *map, t_vars *vars)
 {
 	t_pos	pos;
+        int     i;
+        int     j;
 
-	for (int i = 0; i < (int)map->row; i++) {
-		for (int j = 0; j < (int)map->col; j++) {
-				pos.now[0] = i * DIST + SIZE;
-				pos.now[1] = j * DIST + SIZE;
-				pos.next[0] = i * DIST + SIZE;
-				pos.next[1] = (j + 1) * DIST + SIZE;
-				bresenham(&pos ,vars, get_color(map->map[i][j]));
-		}
-	}	
+        i = 0;
+        while (i <= (int)map->row)
+        {
+                j = 0;
+                while (j < (int)map->col)
+                {
+                    pos.now[0] = i * DIST;
+                    pos.now[1] = j * DIST;
+                    pos.next[0] = i * DIST;
+                    pos.next[1] = (j + 1) * DIST;
+                    draw_line(vars, &pos);
+                    j++;
+                }
+                i++;
+        }
+        i = 0;
+        while (i < (int)map->row)
+        {
+            j = 0;
+            while (j <= (int)map->col)
+            {
+                pos.now[0] = i * DIST;
+                pos.now[1] = j * DIST;
+                pos.next[0] = (i + 1) * DIST;
+                pos.next[1] = j * DIST;
+                draw_line(vars, &pos);
+                j++;
+            }
+            i++;
+        }
 }
 
 int	close_win(int keycode, t_vars *vars)
@@ -74,7 +69,7 @@ void	make_mlx(t_map *map)
 	t_vars	vars;
 
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, map->col * SIZE, map->row * SIZE, "test");
+	vars.win = mlx_new_window(vars.mlx, SIZE, SIZE, "test");
 	draw(map, &vars);
 	mlx_key_hook(vars.win, close_win, &vars);
 	mlx_loop(vars.mlx);
