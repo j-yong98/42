@@ -30,7 +30,7 @@ void    create_signal(pid_t pid, char *str)
     tmp = ft_strjoin(str, "\n");
     if (!tmp)
         exit(0);
-    printf("send info : %d, %s, %zu\n", pid, tmp, ft_strlen(tmp));
+    printf("send info : %d, %zu, %s", pid, ft_strlen(tmp), tmp);
     send(pid, tmp, ft_strlen(tmp));
     free(tmp);
 }
