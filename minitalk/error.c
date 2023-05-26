@@ -6,13 +6,13 @@ int validate(int ac, char *av)
 
     if (ac != 3)
     {
-        printf("Illegal Argument!\n");
+        ft_printf("Illegal Argument!\n");
         return (-1);
     }
     pid = ft_atoi(av);
     if (pid <= 100 || pid >= 99999)
     {
-        printf("PID Error\n");
+        ft_printf("PID Error\n");
         return -1;
     }
     return pid;

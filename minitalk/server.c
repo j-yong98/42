@@ -22,7 +22,7 @@ void    get_signal(int signal)
 int main(void)
 {
     message = (t_message *)malloc(sizeof(t_message));
-    printf("SERVER START, PID : %d\n", getpid());
+    ft_printf("SERVER START, PID : %d\n", getpid());
     signal(SIGUSR1, get_signal);
     signal(SIGUSR2, get_signal);
     while(1)

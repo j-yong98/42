@@ -2,8 +2,8 @@
 # define MINITALK_H
 # include <signal.h>
 # include <unistd.h>
+# include "ft_printf/ft_printf.h"
 # include "libft/libft.h"
-# include <stdio.h>
 typedef struct t_message
 {
     int     bit;
