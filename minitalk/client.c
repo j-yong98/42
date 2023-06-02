@@ -6,7 +6,7 @@
 /*   By: jaeychoi <jaeychoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 12:31:18 by jaeychoi          #+#    #+#             */
-/*   Updated: 2023/06/02 13:24:43 by jaeychoi         ###   ########.fr       */
+/*   Updated: 2023/06/02 13:34:57 by jaeychoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,5 @@ int	main(int ac, char **av)
 	if (pid == -1)
 		return (0);
 	create_signal(pid, av[2]);
+	return (0);
 }
