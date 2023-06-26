@@ -8,3 +8,4 @@
 |[get_next_line](get_next_line)|getline을 구현하며 static 키워드와 fd 관련 학습|완료|
 |[born2beroot](born2beroot)|미니 서버를 만들고 서버의 비밀번호 정책, sudo 정책 등 기본적인 설정과 자신만의 웹서비스 만들기|완료|
 |[minitalk](minitalk)|시그널을 이용한 서버와 클라이언트의 통신|완료|
+|[fdf](fdf)|그래픽스 관련 학습|과정 중단|
